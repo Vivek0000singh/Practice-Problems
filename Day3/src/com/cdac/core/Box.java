@@ -42,8 +42,8 @@ public class Box {
 		return this.width;
 	}
 	
-	public double setWidth(double width) {
-		return this.width=width;
+	public double setWidth(double w) {
+		return this.width=w;
 	}
 
 }
