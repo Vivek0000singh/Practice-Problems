@@ -1,0 +1,33 @@
+ Frequency of the Most Frequent Element
+
+
+class Solution {
+
+   public int maxFrequency(int[] nums, int k) {
+        HashMap<Integer, Integer> freq = new HashMap<>();
+        int n = nums.length;
+        int maxFreq = 1;
+
+        for (int i = 0; i < n; i++) {
+            HashMap<Integer, Integer> temp = new HashMap<>(freq);
+            int ops = k;
+            int count = 1; // include nums[i] itself
+
+            // try to raise smaller numbers to nums[i]
+            for (int j = 0; j < n; j++) {
+                if (i == j) continue;
+                int diff = nums[i] - nums[j];
+                if (diff <= 0) continue;
+
+                if (ops >= diff) {
+                    ops -= diff;
+                    count++;
+                }
+            }
+
+            maxFreq = Math.max(maxFreq, count);
+        }
+
+        return maxFreq;
+    }
+}
